@@ -1,11 +1,11 @@
 import './App.css';
-import ExpensesList from './components/ExpensesList';
+import Notes from './components/Notes';
 
 function App() {
   return (
     <div className="App">
       <h1>Welcome to React Project</h1>
-      <ExpensesList />
+      <Notes />
     </div>
   );
 }

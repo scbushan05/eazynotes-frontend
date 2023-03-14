@@ -1,21 +1,20 @@
+import { useEffect, useState } from "react";
+import { readAll } from "../services/notes.service";
+
 const Notes = () => {
-    const notes = [
-        {
-            id: 1,
-            title: 'My first Note',
-            body: 'My first note description'
-        },
-        {
-            id: 2,
-            title: 'My second Note',
-            body: 'My second note description'
-        },
-        {
-            id: 3,
-            title: 'My third Note',
-            body: 'My third note description'
-        }
-    ];
+
+    const [notes, setNotes] = useState([]);
+
+    useEffect(() => {
+        readAll()
+            .then(response => {
+                console.log(`Received the response from API ${response.data}`);
+                setNotes(response.data);
+            }).catch(error => {
+                console.log(`Error occured ${error}`);
+            })
+    }, []);
+
     return (
         <table border={1}>
             <tr>
